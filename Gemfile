@@ -20,6 +20,10 @@ group :test, :development do
   gem "rspec-rails", ">= 2.0.0.rc"
 end
 
+group :development do
+	gem 'unicorn', '1.1.4'
+end
+
 group :test do
 	gem "shoulda"
   gem 'factory_girl_rails'

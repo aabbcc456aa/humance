@@ -1,0 +1,63 @@
+	<div class="clear">&nbsp;</div>
+					
+		<h3>Listing employees</h3>
+		
+		<table class="display stylized" id="example">
+			<thead>
+				<tr>
+			    <th>Code</th>
+			    <th>Name</th>
+			    <th>Sex</th>
+			    <th>Birthplace</th>
+			    <th>Birthday</th>
+			    <th>Educational background</th>
+			    <th>Politics</th>
+			    <th>Id card</th>
+			    <th>Contact</th>
+			    <th>Hired on</th>
+			    <th></th>
+			    <th></th>
+			    <th></th>
+				</tr>
+
+			</thead>
+			<tbody>
+				<% @employees.each do |employee| %>
+				  <tr class="gradeA even">
+				    <td><%= employee.code %></td>
+				    <td><%= employee.name %></td>
+				    <td><%= employee.sex %></td>
+				    <td><%= employee.birthplace %></td>
+				    <td><%= employee.birthday %></td>
+				    <td><%= employee.educational_background %></td>
+				    <td><%= employee.politics %></td>
+				    <td><%= employee.id_card %></td>
+				    <td><%= employee.contact %></td>
+				    <td><%= employee.hired_on %></td>
+				    <td><%= link_to 'Show', employee %></td>
+				    <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
+				    <td><%= link_to 'Destroy', employee, :confirm => 'Are you sure?', :method => :delete %></td>
+				  </tr>
+				<% end %>
+			</tbody>
+			<tfoot>
+				<tr>
+			    <th>Code</th>
+			    <th>Name</th>
+			    <th>Sex</th>
+			    <th>Birthplace</th>
+			    <th>Birthday</th>
+			    <th>Educational background</th>
+			    <th>Politics</th>
+			    <th>Id card</th>
+			    <th>Contact</th>
+			    <th>Hired on</th>
+			    <th></th>
+			    <th></th>
+			    <th></th>
+				</tr>
+			</tfoot>
+		</table>
+
+		<br />
+		<%= link_to 'New Employee', new_employee_path %>

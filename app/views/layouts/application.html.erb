@@ -50,8 +50,120 @@ $(document).ready(function(){
 </head>
 
 <body>
+	<!-- Header -->
+	<header id="top">
+		<div class="wrapper">
+			<!-- Title/Logo - can use text instead of image -->
+			<div id="title"><span>HR Management</span> system</div>
+			<!-- Top navigation -->
 
-<%= yield %>
+			<div id="topnav">
+				<a href="#"><%= image_tag 'user_default.png', :class => 'avatar' %></a>
+				Logged in as <b>Admin</b>
+				<span>|</span> <a href="#">Settings</a>
+				<span>|</span> <a href="#">Logout</a><br />
 
+				<small>You have <a href="#" class="high"><b>1</b> new message!</a></small>
+			</div>
+			<!-- End of Top navigation -->
+			<!-- Main navigation -->
+			<nav id="menu">
+				<ul class="sf-menu">
+					<li class="current"><a href="dashboard.html">快捷面板</a></li>
+					<li>
+						<a href="grid.html">人事管理</a>
+						<ul>
+							<li><%= link_to '员工基本信息', employees_path %></li>
+							<li><a href="samples-products.html">薪资管理</a></li>
+							<li>
+								<a href="#">薪资导出</a>
+								<ul>
+									<li><a href="samples-files.html">PDF格式</a></li>
+									<li><a href="samples-products.html">打印</a></li>
+								</ul>
+							</li>
+						</ul>					
+					</li>
+					<li>
+						<%= link_to '薪资项管理', salary_items_path %>
+					</li>
+					<li><a href="tables.html">报表</a></li>
+				</ul>
+			</nav>
+			<!-- End of Main navigation -->
+			<!-- Aside links -->
+			<aside><b>中文</b> &middot; <a href="#">English</a> &middot; <a href="#">Deutsch</a></aside>
+
+			<!-- End of Aside links -->
+		</div>
+	</header>
+	<!-- End of Header -->
+	
+	<!-- Page title -->
+	<div id="pagetitle">
+		<div class="wrapper">
+			<h1>Grid System</h1>
+
+			<!-- Quick search box -->
+			<form action="" method="get"><input class="" type="text" id="q" name="q" /></form>
+		</div>
+	</div>
+	<!-- End of Page title -->
+	
+	
+	<!-- Page content -->
+	<div id="page">
+		<!-- Wrapper -->
+		<div class="wrapper">
+			<%= yield %>
+		</div>
+		<!-- End of Wrapper -->
+	</div>
+	<!-- End of Page content -->
+
+	
+	<!-- Page footer -->
+	<footer id="bottom">
+		<div class="wrapper">
+			<nav>
+				<a href="#">Dashboard</a> &middot;
+				<a href="#">Content</a> &middot;
+				<a href="#">Reports</a> &middot;
+
+				<a href="#">Users</a> &middot;
+				<a href="#">Media</a> &middot;
+				<a href="#">Events</a> &middot;
+				<a href="#">Newsletter</a> &middot;
+				<a href="#">Settings</a>
+
+			</nav>
+			<p>Copyright &copy; 2010 <b><a href="http://themeforest.net/user/zoranjuric" title="Visit my profile page @ThemeForest">西弗瑞</a></b> | Powered by <a href="http://www.famfamfam.com/">Lewisou</a></p>
+		</div>
+	</footer>
+	<!-- End of Page footer -->
+
+
+	
+	<!-- Animated footer -->
+	<footer id="animated">
+		<ul>
+			<li><a href="#">Dashboard</a></li>
+			<li><a href="#">Content</a></li>
+			<li><a href="#">Reports</a></li>
+			<li><a href="#">Users</a></li>
+
+			<li><a href="#">Media</a></li>
+			<li><a href="#">Events</a></li>
+			<li><a href="#">Newsletter</a></li>
+			<li><a href="#">Settings</a></li>
+		</ul>
+	</footer>
+	<!-- End of Animated footer -->
+
+	<!-- Scroll to top link -->
+	<a href="#" id="totop">^ scroll to top</a>
+
+	<!-- Admin template javascript load -->
+	<%= javascript_include_tag 'administry' %>
 </body>
 </html>

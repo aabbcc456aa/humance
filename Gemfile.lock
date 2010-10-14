@@ -107,6 +107,8 @@ GEM
     treetop (1.4.8)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
+    unicorn (1.1.4)
+      rack
     webrat (0.7.1)
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
@@ -127,5 +129,6 @@ DEPENDENCIES
   rspec-rails (>= 2.0.0.rc)
   shoulda
   sqlite3-ruby
+  unicorn (= 1.1.4)
   webrat (~> 0.7.1)
   will_paginate!

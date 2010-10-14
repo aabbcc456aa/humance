@@ -1,4 +1,8 @@
 Humance::Application.routes.draw do
+  resources :salary_items
+
+  resources :employees
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
