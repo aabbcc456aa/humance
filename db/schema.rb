@@ -10,7 +10,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101014133250) do
+ActiveRecord::Schema.define(:version => 20101103154824) do
+
+  create_table "attachment_files", :force => true do |t|
+    t.string   "data_file_name"
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.datetime "data_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contracts", :force => true do |t|
+    t.date     "from"
+    t.integer  "term"
+    t.integer  "position_id"
+    t.integer  "department_id"
+    t.integer  "attachment_file_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "departments", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "employees", :force => true do |t|
     t.string   "code"
@@ -26,6 +51,12 @@ ActiveRecord::Schema.define(:version => 20101014133250) do
     t.date     "worked_from"
     t.date     "hired_on"
     t.text     "remark"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "positions", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

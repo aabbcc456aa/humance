@@ -1,0 +1,6 @@
+"zh-CN":
+  employees:
+    index:
+      page_title: 人员列表
+    new:
+      page_title: 添加人员

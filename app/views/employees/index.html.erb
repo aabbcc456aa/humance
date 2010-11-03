@@ -1,20 +1,19 @@
+<% @page_title = t '.page_title' %>
 	<div class="clear">&nbsp;</div>
-					
-		<h3>Listing employees</h3>
 		
 		<table class="display stylized" id="example">
 			<thead>
 				<tr>
-			    <th>Code</th>
-			    <th>Name</th>
-			    <th>Sex</th>
-			    <th>Birthplace</th>
-			    <th>Birthday</th>
-			    <th>Educational background</th>
-			    <th>Politics</th>
-			    <th>Id card</th>
-			    <th>Contact</th>
-			    <th>Hired on</th>
+			    <th><%= sort_link @search, :code %></th>
+			    <th><%= sort_link @search, :name %></th>
+			    <th><%= sort_link @search, :sex %></th>
+			    <th><%= sort_link @search, :birthplace %></th>
+			    <th><%= sort_link @search, :birthday %></th>
+			    <th><%= sort_link @search, :educational_background %></th>
+			    <th><%= sort_link @search, :politics %></th>
+			    <th><%= sort_link @search, :id_card %></th>
+			    <th><%= sort_link @search, :contact %></th>
+			    <th><%= sort_link @search, :hired_on %></th>
 			    <th></th>
 			    <th></th>
 			    <th></th>
@@ -40,23 +39,7 @@
 				  </tr>
 				<% end %>
 			</tbody>
-			<tfoot>
-				<tr>
-			    <th>Code</th>
-			    <th>Name</th>
-			    <th>Sex</th>
-			    <th>Birthplace</th>
-			    <th>Birthday</th>
-			    <th>Educational background</th>
-			    <th>Politics</th>
-			    <th>Id card</th>
-			    <th>Contact</th>
-			    <th>Hired on</th>
-			    <th></th>
-			    <th></th>
-			    <th></th>
-				</tr>
-			</tfoot>
+		
 		</table>
 
 		<br />

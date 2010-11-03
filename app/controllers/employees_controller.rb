@@ -2,7 +2,8 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.xml
   def index
-    @employees = Employee.all
+    @search = Employee.search(params[:search])
+    @employees = @search.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

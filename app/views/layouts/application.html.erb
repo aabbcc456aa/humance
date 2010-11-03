@@ -54,11 +54,11 @@ $(document).ready(function(){
 	<header id="top">
 		<div class="wrapper">
 			<!-- Title/Logo - can use text instead of image -->
-			<div id="title"><span>HR Management</span> system</div>
+			<div id="title"><span>上海东虹环境保洁</span>有限公司</div>
 			<!-- Top navigation -->
 
 			<div id="topnav">
-				<a href="#"><%= image_tag 'user_default.png', :class => 'avatar' %></a>
+				<a href="#"><%= image_tag 'style/user_default.png', :class => 'avatar' %></a>
 				Logged in as <b>Admin</b>
 				<span>|</span> <a href="#">Settings</a>
 				<span>|</span> <a href="#">Logout</a><br />
@@ -69,30 +69,34 @@ $(document).ready(function(){
 			<!-- Main navigation -->
 			<nav id="menu">
 				<ul class="sf-menu">
-					<li class="current"><a href="dashboard.html">快捷面板</a></li>
-					<li>
-						<a href="grid.html">人事管理</a>
+					<li><a href="dashboard.html"><%= t '.menu.dashboard' %></a></li>
+					<li class="current">
+						<a href="grid.html"><%= t '.menu.human_resource' %></a>
 						<ul>
-							<li><%= link_to '员工基本信息', employees_path %></li>
-							<li><a href="samples-products.html">薪资管理</a></li>
+							<li><%= link_to t('.menu.basic_info'), employees_path %></li>
+							<li><%= link_to t('.menu.contract'), contracts_path %></li>
+							<li><%= link_to t('.menu.salary'), employees_path %></li>
+						</ul>					
+					</li>
+					<li><a href="tables.html">报表</a>
+						<ul>
+							<li><a href="samples-files.html">PDF格式</a></li>
 							<li>
-								<a href="#">薪资导出</a>
+								<a href="samples-products.html">打印</a>
 								<ul>
 									<li><a href="samples-files.html">PDF格式</a></li>
 									<li><a href="samples-products.html">打印</a></li>
 								</ul>
 							</li>
-						</ul>					
-					</li>
-					<li>
-						<%= link_to '薪资项管理', salary_items_path %>
-					</li>
-					<li><a href="tables.html">报表</a></li>
+						</ul>
+						</li>
 				</ul>
 			</nav>
 			<!-- End of Main navigation -->
 			<!-- Aside links -->
-			<aside><b>中文</b> &middot; <a href="#">English</a> &middot; <a href="#">Deutsch</a></aside>
+			<aside><%= link_to '中文', url_for(:locale => 'zh-CN') %> &middot; 
+			<%= link_to 'English', url_for(:locale => :en) %> &middot; 
+			<%= link_to 'Deutsch', url_for(:locale => :de) %></aside>
 
 			<!-- End of Aside links -->
 		</div>
@@ -102,7 +106,7 @@ $(document).ready(function(){
 	<!-- Page title -->
 	<div id="pagetitle">
 		<div class="wrapper">
-			<h1>Grid System</h1>
+			<h1><%= @page_title %></h1>
 
 			<!-- Quick search box -->
 			<form action="" method="get"><input class="" type="text" id="q" name="q" /></form>

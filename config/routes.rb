@@ -1,4 +1,10 @@
 Humance::Application.routes.draw do
+  resources :contracts
+
+  resources :departments
+
+  resources :positions
+
   resources :employees
 
   # The priority is based upon order of creation:

@@ -1,0 +1,9 @@
+#page th a {
+	color: #FFF;
+	text-decoration:none;
+	border-bottom:1px solid #FFF;
+}
+#page th a:hover, #page th a:focus, #page th a:active {
+	background-color:#B5D5FF;
+	border-bottom:1px solid #329ECC;
+}

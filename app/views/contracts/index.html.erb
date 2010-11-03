@@ -1,0 +1,33 @@
+<h1>Listing contracts</h1>
+
+<table>
+  <tr>
+	  <th><%= sort_link @search, :employee_code %></th>
+    <th><%= sort_link @search, :employee_name %></th>
+    <th><%= sort_link @search, :employee_sex %></th>
+
+    <th>From</th>
+    <th>Term</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contracts.each do |contract| %>
+  <tr>
+	  <td><%= contract.employee.try(:code) %></td>
+    <td><%= contract.employee.try(:name) %></td>
+    <td><%= contract.employee.try(:sex) %></td>
+
+    <td><%= contract.from %></td>
+    <td><%= contract.term %></td>
+    <td><%= link_to 'Show', contract %></td>
+    <td><%= link_to 'Edit', edit_contract_path(contract) %></td>
+    <td><%= link_to 'Destroy', contract, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Contract', new_contract_path %>
