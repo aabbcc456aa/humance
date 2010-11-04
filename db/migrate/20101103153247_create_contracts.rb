@@ -6,6 +6,8 @@ class CreateContracts < ActiveRecord::Migration
       t.references :position
       t.references :department
       t.references :attachment_file
+      t.references :employee
+      t.string :state, :default => 'active'
 
       t.timestamps
     end

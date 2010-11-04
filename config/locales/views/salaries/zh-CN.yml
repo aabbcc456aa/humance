@@ -1,0 +1,12 @@
+"zh-CN":
+  salaries:
+    index:
+      page_title: 薪资列表
+    edit:
+      page_title: 编辑薪资
+    new:
+      page_title: 编辑薪资
+    show:
+      page_title: 薪资明细
+    form:
+      title: 表单

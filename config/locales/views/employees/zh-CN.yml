@@ -2,5 +2,12 @@
   employees:
     index:
       page_title: 人员列表
+      new_employee_button: 新建员工
     new:
       page_title: 添加人员
+    show:
+      page_title: 基本信息
+    edit:
+      page_title: 编辑基本信息
+    form:
+      title: 表单

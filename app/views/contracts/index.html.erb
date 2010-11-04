@@ -1,33 +1,75 @@
-<h1>Listing contracts</h1>
+<% @page_title = t '.page_title' %>
+<div class="clear">&nbsp;</div>
 
-<table>
-  <tr>
-	  <th><%= sort_link @search, :employee_code %></th>
-    <th><%= sort_link @search, :employee_name %></th>
-    <th><%= sort_link @search, :employee_sex %></th>
+<%= form_for @search, :url => contracts_path, :html => {:method => :get} do |f| %>
+<fieldset>
+	<legend><%= t 'commons.search_conditions' %></legend>
 
-    <th>From</th>
-    <th>Term</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+	<div class="field">
+    <%= f.label :code_contains, @search.base.human_attribute_name(:code) %><br />
+    <%= f.text_field :code_contains, :class => 'half' %>
+  </div>
+	<div class="field">
+    <%= f.label :name_contains, @search.base.human_attribute_name(:name) %><br />
+    <%= f.text_field :name_contains, :class => 'half' %>
+  </div>
 
-<% @contracts.each do |contract| %>
-  <tr>
-	  <td><%= contract.employee.try(:code) %></td>
-    <td><%= contract.employee.try(:name) %></td>
-    <td><%= contract.employee.try(:sex) %></td>
+  <div class="field">
+    <%= f.label :sex_eq, @search.base.human_attribute_name(:sex) %><br />
+    <%= f.select(:sex_eq, [['全部', ''], ['男', '男'], ['女', '女']], :class => 'half')  %>
+  </div>
+	<div class="field">
+    <%= f.label :id_card_contains, @search.base.human_attribute_name(:id_card) %><br />
+    <%= f.text_field :id_card_contains, :class => 'half' %>
+  </div>
+</fieldset>
 
-    <td><%= contract.from %></td>
-    <td><%= contract.term %></td>
-    <td><%= link_to 'Show', contract %></td>
-    <td><%= link_to 'Edit', edit_contract_path(contract) %></td>
-    <td><%= link_to 'Destroy', contract, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<div class="actions">
+  <%= f.submit  t('commons.button.search'), :class => "btn btn-green" %>
+</div>
 <% end %>
-</table>
+		
+		<table class="display stylized" id="example">
+			<thead>
+				<tr>
+			    <th><%= sort_link @search, :code %></th>
+			    <th><%= sort_link @search, :name %></th>
+			    <th><%= sort_link @search, :id_card %></th>
+			    <th><%= Contract.human_attribute_name(:from) %></th>
+			    <th><%= Contract.human_attribute_name(:term) %></th>
+			    <th><%= Contract.human_attribute_name(:position) %></th>
+			    <th><%= Contract.human_attribute_name(:department) %></th>
 
-<br />
+			    <th></th>
+			    <th></th>
+			    <th></th>
+				</tr>
 
-<%= link_to 'New Contract', new_contract_path %>
+			</thead>
+			<tbody>
+				<% @employees.each do |employee| %>
+				  <tr class="gradeA even">
+				    <td><%= employee.code %></td>
+				    <td><%= employee.name %></td>
+				    <td><%= employee.id_card %></td>
+			
+				    <td><%= employee.active_contract.try(:from) %></td>
+				    <td><%= employee.active_contract.try(:term) %> <%= t('datetime.prompts.year') if !employee.active_contract.nil? %></td>
+				    <td><%= employee.active_contract.try(:position).try(:name) %></td>
+				    <td><%= employee.active_contract.try(:department).try(:name) %></td>
+				
+				
+				    <td>
+						<%= link_to(t('.new_link'), new_employee_contract_path(employee)) if employee.active_contract.nil? %>
+						<%= link_to t('.download_link'), employee.active_contract.attachment_file if !employee.active_contract.try(:attachment_file).nil? %>
+						</td>
+				    <td><%= link_to t('.edit_link'), edit_employee_contract_path(employee, employee.active_contract) if !employee.active_contract.nil? %></td>
+				    <td><%= link_to t('.delete_link'), employee.active_contract, :confirm => t('commons.messages.confirmation'), :method => :delete if !employee.active_contract.nil? %></td>
+				  </tr>
+				<% end %>
+			</tbody>
+		
+		</table>
+		<%= will_paginate @employees, :next_label => t('commons.page.next'), :previous_label => t('commons.page.pre') %>
+
+		<br />

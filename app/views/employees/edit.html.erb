@@ -1,6 +1,6 @@
-<h1>Editing employee</h1>
+<% @page_title = t '.page_title' %>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @employee %> |
-<%= link_to 'Back', employees_path %>
+<%= link_to t('commons.button.show'), @employee %> |
+<%= link_to t('commons.button.back'), employees_path %>

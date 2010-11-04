@@ -1,0 +1,11 @@
+'zh-CN':
+  activerecord:
+    models:
+      contract: 合同
+    attributes:
+      contract:        
+        from: 开始日期
+        term: 时间
+        position: 职位
+        department: 部门
+        attachment: 合同原件

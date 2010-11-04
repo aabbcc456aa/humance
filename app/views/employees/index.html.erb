@@ -1,5 +1,33 @@
 <% @page_title = t '.page_title' %>
-	<div class="clear">&nbsp;</div>
+<div class="clear">&nbsp;</div>
+
+<%= form_for @search, employees_path, :html => {:method => :get} do |f| %>
+<fieldset>
+	<legend><%= t 'commons.search_conditions' %></legend>
+
+	<div class="field">
+    <%= f.label :code_contains, @search.base.human_attribute_name(:code) %><br />
+    <%= f.text_field :code_contains, :class => 'half' %>
+  </div>
+	<div class="field">
+    <%= f.label :name_contains, @search.base.human_attribute_name(:name) %><br />
+    <%= f.text_field :name_contains, :class => 'half' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sex_eq, @search.base.human_attribute_name(:sex) %><br />
+    <%= f.select(:sex_eq, [['全部', ''], ['男', '男'], ['女', '女']], :class => 'half')  %>
+  </div>
+	<div class="field">
+    <%= f.label :id_card_contains, @search.base.human_attribute_name(:id_card) %><br />
+    <%= f.text_field :id_card_contains, :class => 'half' %>
+  </div>
+</fieldset>
+
+<div class="actions">
+  <%= f.submit  t('commons.button.search'), :class => "btn btn-green" %>
+</div>
+<% end %>
 		
 		<table class="display stylized" id="example">
 			<thead>
@@ -8,12 +36,9 @@
 			    <th><%= sort_link @search, :name %></th>
 			    <th><%= sort_link @search, :sex %></th>
 			    <th><%= sort_link @search, :birthplace %></th>
-			    <th><%= sort_link @search, :birthday %></th>
 			    <th><%= sort_link @search, :educational_background %></th>
 			    <th><%= sort_link @search, :politics %></th>
 			    <th><%= sort_link @search, :id_card %></th>
-			    <th><%= sort_link @search, :contact %></th>
-			    <th><%= sort_link @search, :hired_on %></th>
 			    <th></th>
 			    <th></th>
 			    <th></th>
@@ -27,20 +52,18 @@
 				    <td><%= employee.name %></td>
 				    <td><%= employee.sex %></td>
 				    <td><%= employee.birthplace %></td>
-				    <td><%= employee.birthday %></td>
 				    <td><%= employee.educational_background %></td>
 				    <td><%= employee.politics %></td>
 				    <td><%= employee.id_card %></td>
-				    <td><%= employee.contact %></td>
-				    <td><%= employee.hired_on %></td>
-				    <td><%= link_to 'Show', employee %></td>
-				    <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-				    <td><%= link_to 'Destroy', employee, :confirm => 'Are you sure?', :method => :delete %></td>
+				    <td><%= link_to t('commons.button.show'), employee %></td>
+				    <td><%= link_to t('commons.button.edit'), edit_employee_path(employee) %></td>
+				    <td><%= link_to t('commons.button.destroy'), employee, :confirm => t('commons.messages.confirmation'), :method => :delete %></td>
 				  </tr>
 				<% end %>
 			</tbody>
 		
 		</table>
+		<%= will_paginate @employees, :next_label => t('commons.page.next'), :previous_label => t('commons.page.pre') %>
+		<%= button_to t('.new_employee_button'), new_employee_path, :method => :get, :class => "btn grey" %>
 
 		<br />
-		<%= link_to 'New Employee', new_employee_path %>

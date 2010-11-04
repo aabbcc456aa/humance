@@ -1,4 +1,6 @@
 class EmployeesController < ApplicationController
+  before_filter { |c| c.instance_variable_set(:@menu, :hr) }
+  
   # GET /employees
   # GET /employees.xml
   def index

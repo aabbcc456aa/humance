@@ -1,20 +1,4 @@
-<!-- Left column/section -->
-<section class="column width6 first">
-	<h3><%= t :section_title %></h3>
-	<div class="box box-info">All fields are required</div>
-
-	<form id="sampleform" method="post" action="#">
-		<fieldset>
-			<legend><%= t :fieldset_title %></legend>
-			<p>
-				<label class="required" for="firstname">First name:</label><br/>
-				<input type="text" id="firstname" class="half" value="" name="firstname"/>
-			</p>
-		</fieldset>
-
-	</form>
-<h1>New employee</h1>
+<% @page_title = t '.page_title' %>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', employees_path %>
+<%= link_to t('commons.button.back'), employees_path %>

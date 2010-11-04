@@ -1,0 +1,144 @@
+<% @page_title = t '.page_title' %>
+
+<div class="colgroup leading">
+	<div class="column width3 first">
+		<h4><%= link_to '人员管理', employees_path %></h4>
+		<hr />
+		<table class="no-style full">
+			<tbody>
+				<tr>
+					<td>总人员数</td>
+					<td class="ta-right"><%= Employee.count %></a></td>
+				</tr>
+				<tr>
+					<td>新进人员数</td>
+					<td class="ta-right"><%= Contract.where(:state => :active).count %></td>
+				</tr>
+				<tr>
+					<td>党员人员数</td>
+					<td class="ta-right"><%= Employee.count / 3 %></td>
+				</tr>
+				<tr>
+					<td>本地人员数</td>
+					<td class="ta-right"><%= Employee.count / 3 %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="column width3">
+		<h4><%= link_to '合同管理', contracts_path %></h4>
+		<hr />
+		<table class="no-style full">
+			<tbody>
+				<tr>
+					<td>
+						总合同数
+					</td>
+					<td class="ta-right"><%= Contract.count %></td>
+				</tr>
+				<tr>
+					<td>
+						新签合同数
+					</td>
+					<td class="ta-right"><%= Contract.count / 4 %></td>
+				</tr>
+				<tr>
+					<td>
+						欲到期合同数
+					</td>
+					<td class="ta-right"><%= Contract.count / 5 %></td>
+				</tr>
+				<tr>
+					<td>
+						待续约合同数
+					</td>
+					<td class="ta-right"><%= Contract.count / 6 %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="column width3 first">
+		<h4><%= link_to '薪资管理', salaries_path %></h4>
+		<hr />
+		<table class="no-style full">
+			<tbody>
+				<tr>
+					<td>总金额</td>
+					<td class="ta-right"><%= Salary.sum(:z) %></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="column width3">
+		<h4>车量管理</h4>
+		<hr />
+		<table class="no-style full">
+			<tbody>
+				<tr>
+					<td>总车辆数数量</td>
+					<td class="ta-right">0</td>
+				</tr>
+				<tr>
+					<td>机动车数</td>
+					<td class="ta-right">0</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="column width3 first">
+		<h4>车队管理</h4>
+		<hr />
+		<table class="no-style full">
+			<tbody>
+				<tr>
+					<td>总车队数数量</td>
+					<td class="ta-right">0</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="column width3">
+		<h4>保养管理</h4>
+		<hr />
+		<table class="no-style full">
+			<tbody>
+				<tr>
+					<td>总任务数</td>
+					<td class="ta-right">0</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="column width3 first">
+		<h4>维修管理</h4>
+		<hr />
+		<table class="no-style full">
+			<tbody>
+				<tr>
+					<td>总任务数</td>
+					<td class="ta-right">0</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="column width3">
+		<h4>仓库管理</h4>
+		<hr />
+		<table class="no-style full">
+			<tbody>
+				<tr>
+					<td>总库存数</td>
+					<td class="ta-right">0</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+</div>

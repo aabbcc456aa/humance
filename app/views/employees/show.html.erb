@@ -1,70 +1,72 @@
-<p id="notice"><%= notice %></p>
+<% @page_title = t '.page_title' %>
 
-<p>
-  <b>Code:</b>
-  <%= @employee.code %>
-</p>
+<table class='display stylized'>
+	<tr>
+		<th><%= @employee.class.human_attribute_name(:code) %></th>
+		<td><%= @employee.code %></td>
+	</tr>
 
-<p>
-  <b>Name:</b>
-  <%= @employee.name %>
-</p>
+	<tr>
+		<th><%= @employee.class.human_attribute_name(:name) %></th>
+		<td><%= @employee.name %></td>
+	</tr>
 
-<p>
-  <b>Sex:</b>
-  <%= @employee.sex %>
-</p>
+	<tr>
+		<th><%= @employee.class.human_attribute_name(:sex) %></th>
+		<td><%= @employee.sex %></td>
+	</tr>
 
-<p>
-  <b>Birthplace:</b>
-  <%= @employee.birthplace %>
-</p>
+	<tr>
+		<th><%= @employee.class.human_attribute_name(:birthplace) %></th>
+		<td><%= @employee.birthplace %></td>
+	</tr>
 
-<p>
-  <b>Birthday:</b>
-  <%= @employee.birthday %>
-</p>
+	<tr>
+		<th><%= @employee.class.human_attribute_name(:birthday) %></th>
+		<td><%= @employee.birthday %></td>
+	</tr>
 
-<p>
-  <b>Educational background:</b>
-  <%= @employee.educational_background %>
-</p>
+	<tr>
+		<th><%= @employee.class.human_attribute_name(:educational_background) %></th>
+		<td><%= @employee.educational_background %></td>
+	</tr>
 
-<p>
-  <b>Politics:</b>
-  <%= @employee.politics %>
-</p>
+	<tr>
+		<th><%= @employee.class.human_attribute_name(:politics) %></th>
+		<td><%= @employee.politics %></td>
+	</tr>
 
-<p>
-  <b>Address:</b>
-  <%= @employee.address %>
-</p>
+	<tr>
+		<th><%= @employee.class.human_attribute_name(:address) %></th>
+		<td><%= @employee.address %></td>
+	</tr>
 
-<p>
-  <b>Id card:</b>
-  <%= @employee.id_card %>
-</p>
+	<tr>
+		<th><%= @employee.class.human_attribute_name(:id_card) %></th>
+		<td><%= @employee.id_card %></td>
+	</tr>
 
-<p>
-  <b>Contact:</b>
-  <%= @employee.contact %>
-</p>
+	<tr>
+		<th><%= @employee.class.human_attribute_name(:contact) %></th>
+		<td><%= @employee.contact %></td>
+	</tr>
 
-<p>
-  <b>Worked from:</b>
-  <%= @employee.worked_from %>
-</p>
+	<tr>
+		<th><%= @employee.class.human_attribute_name(:worked_from) %></th>
+		<td><%= @employee.worked_from %></td>
+	</tr>
 
-<p>
-  <b>Hired on:</b>
-  <%= @employee.hired_on %>
-</p>
+	<tr>
+		<th><%= @employee.class.human_attribute_name(:hired_on) %></th>
+		<td><%= @employee.hired_on %></td>
+	</tr>
 
-<p>
-  <b>Remark:</b>
-  <%= @employee.remark %>
-</p>
+	<tr>
+		<th><%= @employee.class.human_attribute_name(:remark) %></th>
+		<td><%= @employee.remark %></td>
+	</tr>
 
+</table>
 
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+<%= link_to t('commons.button.edit'), edit_employee_path(@employee) %> |
+<%= link_to t('commons.button.back'), employees_path %>

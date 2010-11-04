@@ -24,6 +24,7 @@ end
 
 group :development do
 	gem 'unicorn'
+	gem 'open_gem'
 end
 
 group :test do

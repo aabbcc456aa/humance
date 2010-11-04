@@ -3,7 +3,10 @@
     application:
       menu:
         dashboard: 首页
-        human_resource: 人事管理
+        human_resource: 人员管理
         basic_info: 基本信息管理
         contract: 合同管理
         salary: 薪资管理
+        admin:
+          department: 部门管理
+          position: 职位管理

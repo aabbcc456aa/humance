@@ -1,0 +1,16 @@
+"zh-CN":
+  contracts:
+    index:
+      page_title: 合同列表
+      delete_link: 解除合同
+      edit_link: 修改合同
+      new_link: 新建合同
+      download_link: 下载原件
+    new:
+      page_title: 新建合同
+    show:
+      page_title: 合同信息
+    edit:
+      page_title: 修改合同
+    form:
+      title: 表单

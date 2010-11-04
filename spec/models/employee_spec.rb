@@ -6,6 +6,7 @@ describe Employee do
   it { should validate_presence_of(:id_card) }
 end
 
+
 # == Schema Information
 #
 # Table name: employees
@@ -14,7 +15,7 @@ end
 #  code                   :string(255)
 #  name                   :string(255)
 #  sex                    :string(255)
-#  birthplace             :string(255)
+#  birthplace             :text
 #  birthday               :date
 #  educational_background :string(255)
 #  politics               :string(255)

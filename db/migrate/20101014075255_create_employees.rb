@@ -4,7 +4,7 @@ class CreateEmployees < ActiveRecord::Migration
       t.string :code
       t.string :name
       t.string :sex
-      t.string :birthplace
+      t.text :birthplace
       t.date :birthday
       t.string :educational_background
       t.string :politics

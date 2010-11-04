@@ -1,13 +1,15 @@
 class ContractsController < ApplicationController
+  before_filter { |c| c.instance_variable_set(:@menu, :hr) }
+  
   # GET /contracts
   # GET /contracts.xml
   def index
-    @search = Contract.search(params[:search])
-    @contracts = @search.paginate(:page => params[:page])
+    @search = Employee.search(params[:search])
+    @employees = @search.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @contracts }
+      format.xml  { render :xml => @employees }
     end
   end
 
@@ -25,7 +27,8 @@ class ContractsController < ApplicationController
   # GET /contracts/new
   # GET /contracts/new.xml
   def new
-    @contract = Contract.new
+    @employee = Employee.find(params[:employee_id])
+    @contract = @employee.contracts.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,17 +38,19 @@ class ContractsController < ApplicationController
 
   # GET /contracts/1/edit
   def edit
-    @contract = Contract.find(params[:id])
+    @employee = Employee.find(params[:employee_id])
+    @contract = @employee.contracts.find(params[:id])
   end
 
   # POST /contracts
   # POST /contracts.xml
   def create
-    @contract = Contract.new(params[:contract])
+    
+    @contract = Employee.find(params[:employee_id]).contracts.new(params[:contract])
 
     respond_to do |format|
       if @contract.save
-        format.html { redirect_to(@contract, :notice => 'Contract was successfully created.') }
+        format.html { redirect_to(contracts_url, :notice => 'Contract was successfully created.') }
         format.xml  { render :xml => @contract, :status => :created, :location => @contract }
       else
         format.html { render :action => "new" }
@@ -57,11 +62,12 @@ class ContractsController < ApplicationController
   # PUT /contracts/1
   # PUT /contracts/1.xml
   def update
+    # @employee = Employee.find(params[:employee_id])
     @contract = Contract.find(params[:id])
 
     respond_to do |format|
       if @contract.update_attributes(params[:contract])
-        format.html { redirect_to(@contract, :notice => 'Contract was successfully updated.') }
+        format.html { redirect_to(contracts_path, :notice => 'Contract was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

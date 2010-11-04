@@ -1,0 +1,92 @@
+<% @page_title = t '.page_title' %>
+
+<%= form_for @search, :url => salaries_path, :html => {:method => :get} do |f| %>
+<fieldset>
+	<legend><%= t 'commons.search_conditions' %></legend>
+
+	<div class="field">
+    <%= f.label :code_contains, @search.base.human_attribute_name(:code) %><br />
+    <%= f.text_field :code_contains, :class => 'half' %>
+  </div>
+	<div class="field">
+    <%= f.label :name_contains, @search.base.human_attribute_name(:name) %><br />
+    <%= f.text_field :name_contains, :class => 'half' %>
+  </div>
+</fieldset>
+
+<div class="actions">
+  <%= f.submit  t('commons.button.search'), :class => "btn btn-green" %>
+</div>
+<% end %>
+
+
+<table class="display stylized">
+  <tr>
+    <th><%= sort_link @search, :name %></th>
+
+    <th><%= Salary.human_attribute_name(:a) %></th>
+    <th><%= Salary.human_attribute_name(:b) %></th>
+    <th><%= Salary.human_attribute_name(:c) %></th>
+    <th><%= Salary.human_attribute_name(:d) %></th>
+    <th><%= Salary.human_attribute_name(:e) %></th>
+    <th><%= Salary.human_attribute_name(:f) %></th>
+    <th><%= Salary.human_attribute_name(:g) %></th>
+    <th><%= Salary.human_attribute_name(:h) %></th>
+    <th><%= Salary.human_attribute_name(:i) %></th>
+    <th><%= Salary.human_attribute_name(:j) %></th>
+    <th><%= Salary.human_attribute_name(:k) %></th>
+    <th><%= Salary.human_attribute_name(:l) %></th>
+    <th><%= Salary.human_attribute_name(:m) %></th>
+    <th><%= Salary.human_attribute_name(:n) %></th>
+    <th><%= Salary.human_attribute_name(:o) %></th>
+    <th><%= Salary.human_attribute_name(:p) %></th>
+    <th><%= Salary.human_attribute_name(:q) %></th>
+    <th><%= Salary.human_attribute_name(:r) %></th>
+    <th><%= Salary.human_attribute_name(:s) %></th>
+    <th><%= Salary.human_attribute_name(:t) %></th>
+    <th><%= Salary.human_attribute_name(:u) %></th>
+    <th><%= Salary.human_attribute_name(:v) %></th>
+    <th><%= Salary.human_attribute_name(:w) %></th>
+    <th><%= Salary.human_attribute_name(:x) %></th>
+    <th><%= Salary.human_attribute_name(:y) %></th>
+    <th></th>
+  </tr>
+
+<% @employees.each do |employee| %>
+	<% salary = employee.salary || Salary.new %>
+  <tr class='gradeA even'>
+    <td><%= employee.name %></td>
+
+    <td><%= salary.a %></td>
+    <td><%= salary.b %></td>
+    <td><%= salary.c %></td>
+    <td><%= salary.d %></td>
+    <td><%= salary.e %></td>
+    <td><%= salary.f %></td>
+    <td><%= salary.g %></td>
+    <td><%= salary.h %></td>
+    <td><%= salary.i %></td>
+    <td><%= salary.j %></td>
+    <td><%= salary.k %></td>
+    <td><%= salary.l %></td>
+    <td><%= salary.m %></td>
+    <td><%= salary.n %></td>
+    <td><%= salary.o %></td>
+    <td><%= salary.p %></td>
+    <td><%= salary.q %></td>
+    <td><%= salary.r %></td>
+    <td><%= salary.s %></td>
+    <td><%= salary.t %></td>
+    <td><%= salary.u %></td>
+    <td><%= salary.v %></td>
+    <td><%= salary.w %></td>
+    <td><%= salary.x %></td>
+    <td><%= salary.y %></td>
+    <td><%= link_to t('commons.button.edit'), salary.new_record? ? new_employee_salary_path(employee) : edit_employee_salary_path(employee, salary) %></td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @employees, :next_label => t('commons.page.next'), :previous_label => t('commons.page.pre') %>
+
+<br />
+

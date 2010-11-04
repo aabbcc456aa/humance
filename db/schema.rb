@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101103154824) do
+ActiveRecord::Schema.define(:version => 20101104143928) do
 
   create_table "attachment_files", :force => true do |t|
     t.string   "data_file_name"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(:version => 20101103154824) do
     t.integer  "position_id"
     t.integer  "department_id"
     t.integer  "attachment_file_id"
+    t.integer  "employee_id"
+    t.string   "state",              :default => "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -41,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20101103154824) do
     t.string   "code"
     t.string   "name"
     t.string   "sex"
-    t.string   "birthplace"
+    t.text     "birthplace"
     t.date     "birthday"
     t.string   "educational_background"
     t.string   "politics"
@@ -57,6 +59,38 @@ ActiveRecord::Schema.define(:version => 20101103154824) do
 
   create_table "positions", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "salaries", :force => true do |t|
+    t.float    "a"
+    t.float    "b"
+    t.float    "c"
+    t.float    "d"
+    t.float    "e"
+    t.float    "f"
+    t.float    "g"
+    t.float    "h"
+    t.float    "i"
+    t.float    "j"
+    t.float    "k"
+    t.float    "l"
+    t.float    "m"
+    t.float    "n"
+    t.float    "o"
+    t.float    "p"
+    t.float    "q"
+    t.float    "r"
+    t.float    "s"
+    t.float    "t"
+    t.float    "u"
+    t.float    "v"
+    t.float    "w"
+    t.float    "x"
+    t.float    "y"
+    t.float    "z"
+    t.integer  "employee_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,34 @@
+<% @page_title = t '.page_title' %>
+
+<table class="display stylized">
+
+<tr><th style="width: 10em"><%= Salary.human_attribute_name(:a) %></th> <td> <%= @salary.a %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:b) %></th> <td> <%= @salary.b %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:c) %></th> <td> <%= @salary.c %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:d) %></th> <td> <%= @salary.d %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:e) %></th> <td> <%= @salary.e %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:f) %></th> <td> <%= @salary.f %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:g) %></th> <td> <%= @salary.g %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:h) %></th> <td> <%= @salary.h %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:i) %></th> <td> <%= @salary.i %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:j) %></th> <td> <%= @salary.j %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:k) %></th> <td> <%= @salary.k %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:l) %></th> <td> <%= @salary.l %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:m) %></th> <td> <%= @salary.m %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:n) %></th> <td> <%= @salary.n %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:o) %></th> <td> <%= @salary.o %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:p) %></th> <td> <%= @salary.p %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:q) %></th> <td> <%= @salary.q %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:r) %></th> <td> <%= @salary.r %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:s) %></th> <td> <%= @salary.s %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:t) %></th> <td> <%= @salary.t %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:u) %></th> <td> <%= @salary.u %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:v) %></th> <td> <%= @salary.v %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:w) %></th> <td> <%= @salary.w %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:x) %></th> <td> <%= @salary.x %> </td> </tr>
+<tr><th><%= Salary.human_attribute_name(:y) %></th> <td> <%= @salary.y %> </td> </tr>
+
+</table>
+
+<%= link_to t('commons.button.edit'), edit_salary_path(@salary) %> |
+<%= link_to t('commons.button.back'), salaries_path %>

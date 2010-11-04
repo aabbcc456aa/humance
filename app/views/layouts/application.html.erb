@@ -59,44 +59,59 @@ $(document).ready(function(){
 
 			<div id="topnav">
 				<a href="#"><%= image_tag 'style/user_default.png', :class => 'avatar' %></a>
-				Logged in as <b>Admin</b>
-				<span>|</span> <a href="#">Settings</a>
-				<span>|</span> <a href="#">Logout</a><br />
+				当前用户 <b>Admin</b>
+				<span>|</span> <a href="#">设置</a>
+				<span>|</span> <a href="#">登出</a><br />
 
-				<small>You have <a href="#" class="high"><b>1</b> new message!</a></small>
+				<small>你有 <a href="#" class="high"><b>1</b> 新消息!</a></small>
 			</div>
 			<!-- End of Top navigation -->
 			<!-- Main navigation -->
 			<nav id="menu">
 				<ul class="sf-menu">
-					<li><a href="dashboard.html"><%= t '.menu.dashboard' %></a></li>
-					<li class="current">
-						<a href="grid.html"><%= t '.menu.human_resource' %></a>
+					<li class='<%= "current" if @menu == :dashboard %>'><%= link_to t('.menu.dashboard'), dashboard_path %></li>
+					
+					<li class="<%= "current" if @menu == :hr %>">
+						<a href="#"><%= t '.menu.human_resource' %></a>
 						<ul>
 							<li><%= link_to t('.menu.basic_info'), employees_path %></li>
 							<li><%= link_to t('.menu.contract'), contracts_path %></li>
-							<li><%= link_to t('.menu.salary'), employees_path %></li>
+							<li><%= link_to t('.menu.salary'), salaries_path %></li>
 						</ul>					
 					</li>
-					<li><a href="tables.html">报表</a>
+					
+					<li><a href="#">车辆管理</a></li>
+					<li><a href="#">车队管理</a></li>
+					<li><a href="#">保养管理</a></li>
+					<li><a href="#">维修管理</a></li>
+					<li><a href="#">仓库管理</a></li>
+					<li><a href="#">统计分析</a></li>					
+					<li><a href="#">报表</a>
 						<ul>
-							<li><a href="samples-files.html">PDF格式</a></li>
+							<li><a href="#">PDF格式</a></li>
 							<li>
-								<a href="samples-products.html">打印</a>
+								<a href="#">打印</a>
 								<ul>
-									<li><a href="samples-files.html">PDF格式</a></li>
-									<li><a href="samples-products.html">打印</a></li>
+									<li><a href="#">PDF格式</a></li>
+									<li><a href="#">打印</a></li>
 								</ul>
 							</li>
 						</ul>
-						</li>
+					</li>
+					<li><a href="#">系统</a>
+						<ul>
+							<li><%= link_to t('.menu.admin.department'), departments_path %></li>
+							<li><%= link_to t('.menu.admin.position'), positions_path %></li>
+						</ul>
+					</li>
+					
 				</ul>
 			</nav>
 			<!-- End of Main navigation -->
 			<!-- Aside links -->
 			<aside><%= link_to '中文', url_for(:locale => 'zh-CN') %> &middot; 
-			<%= link_to 'English', url_for(:locale => :en) %> &middot; 
-			<%= link_to 'Deutsch', url_for(:locale => :de) %></aside>
+			<b>English</b> &middot; 
+			<b>Deutsch</b></aside>
 
 			<!-- End of Aside links -->
 		</div>
@@ -109,7 +124,7 @@ $(document).ready(function(){
 			<h1><%= @page_title %></h1>
 
 			<!-- Quick search box -->
-			<form action="" method="get"><input class="" type="text" id="q" name="q" /></form>
+			<!-- <form action="" method="get"><input class="" type="text" id="q" name="q" /></form> -->
 		</div>
 	</div>
 	<!-- End of Page title -->
@@ -119,7 +134,13 @@ $(document).ready(function(){
 	<div id="page">
 		<!-- Wrapper -->
 		<div class="wrapper">
+			<section class="column width8 first">
+			<% if !notice.nil? %>
+			<p />
+			<div class="box box-info"><%= notice %></div>
+			<% end %>
 			<%= yield %>
+			</section>
 		</div>
 		<!-- End of Wrapper -->
 	</div>
@@ -130,16 +151,14 @@ $(document).ready(function(){
 	<footer id="bottom">
 		<div class="wrapper">
 			<nav>
-				<a href="#">Dashboard</a> &middot;
-				<a href="#">Content</a> &middot;
-				<a href="#">Reports</a> &middot;
+				<a href="#">人员管理</a> &middot;
+				<a href="#">车辆管理</a> &middot;
+				<a href="#">车队管理</a> &middot;
+				<a href="#">保养管理</a> &middot;
 
-				<a href="#">Users</a> &middot;
-				<a href="#">Media</a> &middot;
-				<a href="#">Events</a> &middot;
-				<a href="#">Newsletter</a> &middot;
-				<a href="#">Settings</a>
-
+				<a href="#">维修管理</a> &middot;
+				<a href="#">仓库管理</a> &middot;
+				<a href="#">统计分析</a> &middot;
 			</nav>
 			<p>Copyright &copy; 2010 <b><a href="http://themeforest.net/user/zoranjuric" title="Visit my profile page @ThemeForest">西弗瑞</a></b> | Powered by <a href="http://www.famfamfam.com/">Lewisou</a></p>
 		</div>
@@ -151,21 +170,19 @@ $(document).ready(function(){
 	<!-- Animated footer -->
 	<footer id="animated">
 		<ul>
-			<li><a href="#">Dashboard</a></li>
-			<li><a href="#">Content</a></li>
-			<li><a href="#">Reports</a></li>
-			<li><a href="#">Users</a></li>
-
-			<li><a href="#">Media</a></li>
-			<li><a href="#">Events</a></li>
-			<li><a href="#">Newsletter</a></li>
-			<li><a href="#">Settings</a></li>
+			<li><a href="#">车辆管理</a></li>
+			<li><a href="#">车队管理</a></li>
+			<li><a href="#">保养管理</a></li>
+			<li><a href="#">维修管理</a></li>
+			<li><a href="#">仓库管理</a></li>
+			<li><a href="#">统计分析</a></li>					
+			<li><a href="#">报表</a>
 		</ul>
 	</footer>
 	<!-- End of Animated footer -->
 
 	<!-- Scroll to top link -->
-	<a href="#" id="totop">^ scroll to top</a>
+	<a href="#" id="totop">^ 回到顶部</a>
 
 	<!-- Admin template javascript load -->
 	<%= javascript_include_tag 'administry' %>
